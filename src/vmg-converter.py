@@ -8,7 +8,6 @@ class VMG:
 
     def __init__(self, custom_params: List[str] = None):
         self.custom_params = custom_params
-        self.sms = None
 
     def load(self, filepath: str):
         vmg_list =  []
@@ -17,9 +16,9 @@ class VMG:
             for line in f.readlines():
                 vmg += line
                 if line == "END:VMSG\n":
-                    vmg_list.append(vmg)
+                    vmg_list.append(self.__parse(vmg))
                     vmg = ""
-        return [*map(self.__parse, vmg_list)]
+        return vmg_list
 
     def __parse(self, vmg: str):
         getTop = lambda keys, dic: reduce(getitem, keys, dic)
@@ -56,6 +55,6 @@ if __name__ == "__main__":
         "Date:",
     ]
     vmg = VMG(CUSTOM_VBODY_PARAMS)
-    sms = vmg.load('./sms.vmg')
+    vmg_list = vmg.load('./sms.vmg')
     with open('./test.json', 'w+') as f:
-        f.write(json.dumps(sms, ensure_ascii=False))
+        f.write(json.dumps(vmg_list, ensure_ascii=False))
