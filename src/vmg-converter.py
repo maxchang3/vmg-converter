@@ -10,14 +10,10 @@ class VMG:
         self.custom_params = custom_params
 
     def load(self, filepath: str):
-        vmg_list =  []
+        vmg_list = []
         with open(filepath, "r") as f:
-            vmg = ""
-            for line in f.readlines():
-                vmg += line
-                if line == "END:VMSG\n":
-                    vmg_list.append(self.__parse(vmg))
-                    vmg = ""
+            text_vmg = filter(lambda x: x.strip() != '', f.read().split('END:VMSG'))
+            vmg_list = [*map(self.__parse, text_vmg)]
         return vmg_list
 
     def __parse(self, vmg: str):
@@ -25,7 +21,7 @@ class VMG:
         res = {}
         relations = []
         for line in vmg.strip().split("\n"):
-            top:dict = getTop(relations, res)
+            top: dict = getTop(relations, res)
             piece = line.split(":")
             if line.startswith("BEGIN:"):
                 begin_name = piece[1]
