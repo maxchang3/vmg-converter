@@ -2,3 +2,4 @@ sms.vmg
 test.xml
 test.json
 .vscode
+__pycache__
