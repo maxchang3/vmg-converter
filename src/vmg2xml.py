@@ -1,6 +1,9 @@
 from typing import List
 from xml.etree import ElementTree as ET
-from vmg import VMG
+try:
+    from src.vmg import VMG
+except:
+    from vmg import VMG
 
 
 def vmg2xml(vmg_list: List, filepath: str) -> None:
@@ -19,7 +22,11 @@ def vmg2xml(vmg_list: List, filepath: str) -> None:
         })
         ele.append(son)
     tree = ET.ElementTree(ele)
-    tree.write(filepath, encoding='utf-8', xml_declaration=True, short_empty_elements=False)
+    try:
+        ET.indent(tree, space="\t", level=0)
+    except:
+        print("Indent error, ET.indent only for python3.9+, but it *won't* affect use.")
+    tree.write(filepath, encoding='utf-8', xml_declaration=True, short_empty_elements=False )
 
 
 if __name__ == "__main__":
@@ -28,4 +35,4 @@ if __name__ == "__main__":
     ]
     vmg = VMG(CUSTOM_VBODY_PARAMS)
     vmg_list = vmg.load('./sms.vmg')
-    vmg2xml(vmg_list)
+    vmg2xml(vmg_list, './test.xml')
