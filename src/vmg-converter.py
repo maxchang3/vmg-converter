@@ -5,9 +5,11 @@ from typing import List
 
 
 class VMG:
-
+    __params = [
+        "Date:"
+    ]
     def __init__(self, custom_params: List[str] = None):
-        self.custom_params = custom_params
+        self.params = self.__params + custom_params
 
     def load(self, filepath: str):
         vmg_list = []
@@ -32,7 +34,7 @@ class VMG:
                 relations.pop()
                 continue
             if relations[-1] == "VBODY":
-                for param in self.custom_params:
+                for param in self.params:
                     if (line.startswith(param)):
                         piece = [param[:-1], line[len(param):].strip()]
                         break
@@ -48,7 +50,6 @@ class VMG:
 if __name__ == "__main__":
     CUSTOM_VBODY_PARAMS = [
         "Date ",
-        "Date:",
     ]
     vmg = VMG(CUSTOM_VBODY_PARAMS)
     vmg_list = vmg.load('./sms.vmg')
