@@ -1,4 +1,3 @@
-import json
 from functools import reduce
 from operator import getitem
 from typing import List
@@ -45,13 +44,3 @@ class VMG:
             name, item = piece
             top[name] = item.strip()
         return res['VMSG']
-
-
-if __name__ == "__main__":
-    CUSTOM_VBODY_PARAMS = [
-        "Date ",
-    ]
-    vmg = VMG(CUSTOM_VBODY_PARAMS)
-    vmg_list = vmg.load('./sms.vmg')
-    with open('./test.json', 'w+') as f:
-        f.write(json.dumps(vmg_list, ensure_ascii=False))

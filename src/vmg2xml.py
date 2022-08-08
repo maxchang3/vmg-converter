@@ -27,12 +27,3 @@ def vmg2xml(vmg_list: List, filepath: str) -> None:
     except:
         print("Indent error, ET.indent only for python3.9+, but it *won't* affect use.")
     tree.write(filepath, encoding='utf-8', xml_declaration=True, short_empty_elements=False )
-
-
-if __name__ == "__main__":
-    CUSTOM_VBODY_PARAMS = [
-        "Date ",
-    ]
-    vmg = VMG(CUSTOM_VBODY_PARAMS)
-    vmg_list = vmg.load('./sms.vmg')
-    vmg2xml(vmg_list, './test.xml')
