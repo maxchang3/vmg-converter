@@ -47,7 +47,7 @@ we can use the command above convert it to
 </smses>
 ```
 
-Note that data in `VBODY` is quite different on various devices. So you need to add custom params according to your file structure, for example, some phones show `Data` as this(without the colon):
+Note that data in `VBODY` is quite different on various devices. So you need to add custom params according to your file structure, for example, some phones show `Date` as this(without the colon):
 
 ```properties
 BEGIN:VBODY
