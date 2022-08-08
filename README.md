@@ -63,6 +63,13 @@ python vmg-converter.py you-vmg-file.vmg -f "Data "
 
 Or, if you want to parse the "Subject:" param in the 'VBODY', just add: `-f "VBODY:"`
 
+## Import xml
+
+For Android, I recommend "SMS Backup and Restore".
+
+
 # Reference:
+
 https://matteocontrini.medium.com/how-to-transfer-windows-phone-smses-to-android-6d5e941f3362
+
 https://github.com/matteocontrini/sms-wp-to-android
