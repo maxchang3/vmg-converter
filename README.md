@@ -61,7 +61,7 @@ So you need run this
 python vmg-converter.py you-vmg-file.vmg -f "Data "
 ```
 
-Or, if you want to parse the "Subject:" param in the 'VBODY', just add: `-f "VBODY:"`
+Or, if you want to parse the "Subject:" param in the 'VBODY', just add: `-f "Subject:"` (**WIP** for other params except "Date ")
 
 ## Import xml
 
