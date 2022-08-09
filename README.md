@@ -2,7 +2,7 @@
 
 > VMG (vMessage) is a file format used by Nokia phones. VMG files store by default sent and received SMS messages. Single VMG files contains the actual text of SMS message and related metadata, such as information about the sender, and date sent or received.
 
-Convert .vmg file into popular formats. Now only to .xml (Android SMS).
+Convert .vmg file into popular formats. Currently only to .xml (Android SMS).
 
 # Usage
 ## Install
